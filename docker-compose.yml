@@ -1,0 +1,11 @@
+version: "3.3"
+
+services:     
+  backend:
+    container_name: sourcesage-challenge-api
+    build: backend
+    command: python3 run.py
+    volumes:
+      - ./backend:/code
+    ports:
+      - "5000:5000"
