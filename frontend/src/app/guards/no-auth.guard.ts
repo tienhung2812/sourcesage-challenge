@@ -6,27 +6,24 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NoAuthGuard implements CanActivate {
   constructor(
     private cookieService: CookieService,
     private router: Router,
   ) {
-    
-  }
 
+  }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     let token = this.cookieService.get('token');
     console.log(token)
     if (token) {
-      return true;
-    } else {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/']);
       return false;
+    } else {
+      return true;
     }
-    
   }
-  
+
 }

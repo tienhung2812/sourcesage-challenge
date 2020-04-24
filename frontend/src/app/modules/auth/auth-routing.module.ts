@@ -16,15 +16,7 @@ const routes: Routes = [
       {
         path: 'signup',
         component: SignupComponent
-      },
-      // Home
-      // { path: 'user', loadChildren: '../modules/user/user.module#UserModule'},
-      // { path: 'store', loadChildren: '../modules/store/store.module#StoreModule'},
-      // { path: 'shoe', loadChildren: '../modules/shoe/shoe.module#ShoeModule'},
-      // { path: 'brand', loadChildren: '../modules/brand/brand.module#BrandModule'},
-      // { path: 'shoes_length', loadChildren: '../modules/shoes-length/shoes-length.module#ShoesLengthModule'},
-      // { path: 'shoes_width', loadChildren: '../modules/shoes-width/shoes-width.module#ShoesWidthModule'},
-      // { path: '', redirectTo: 'home', pathMatch: 'full' },
+      }
     ]
   }
 ];
