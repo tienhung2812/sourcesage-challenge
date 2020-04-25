@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../../services/index';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,7 +15,10 @@ export class SignupComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private cookieService: CookieService,
+    private router: Router
   ) { 
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -34,6 +41,23 @@ export class SignupComponent implements OnInit {
       this.errorMessage = "Invalid input";
       return;
     }
+    this.errorMessage = "";
+    this.authService.signup(
+      this.registerForm.value['name'],
+      this.registerForm.value['email'],
+      this.registerForm.value['password'],
+      this.registerForm.value['gender'],
+      this.registerForm.value['age']
+    ).subscribe(
+      (resp) => {
+        let token = resp.token;
+        this.cookieService.set('token',token);
+        this.router.navigate(['']);
+      },error => {
+        this.errorMessage = "Invalid input";
+        return;
+      }
+    )
 
   }
 

@@ -38,11 +38,17 @@ export class LoginComponent implements OnInit {
       this.errorMessage = "Invalid input";
       return;
     }
-
-    this.authService.login(this.loginForm.value['email'], this.loginForm.value['password']).subscribe(() => {
-      this.cookieService.set('token','123');
-      this.router.navigate(['']);
-    })
+    this.errorMessage = "";
+    this.authService.login(this.loginForm.value['email'], this.loginForm.value['password']).subscribe(
+      (resp) => {
+        let token = resp.token;
+        this.cookieService.set('token',token);
+        this.router.navigate(['']);
+      },error => {
+        this.errorMessage = "Invalid credentials";
+        return;
+      }
+    )
 
   }
 }

@@ -19,26 +19,28 @@ export class AuthService {
       "email": email,
       "password": password
     }
-    return this.http.get('https://api.npms.io/v2/search?q=scope:angular');
 
-    // return this.http.post(`${this.API_URL}`, data, {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // });
+    return this.http.post(`${this.API_URL}/auth/login`, data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
 
   signup(name: string, email: string, password: string, gender:number, age: number): Observable<any> {
     let data = {
       "email": email,
-      "password": password
+      "password": password,
+      "name":name,
+      "age":age,
+      "gender":gender
     }
 
-    return this.http.get('https://api.npms.io/v2/search?q=scope:angular');
-    // return this.http.post(`${this.API_URL}`, data, {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // });
+
+    return this.http.post(`${this.API_URL}/auth/register`, data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
 }
