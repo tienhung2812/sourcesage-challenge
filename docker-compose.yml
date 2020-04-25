@@ -9,3 +9,12 @@ services:
       - ./backend:/code
     ports:
       - "5000:5000"
+  
+  frontend:
+    container_name: sourcesage-challenge-frontend
+    build: frontend
+    command: ./entrypoint.sh
+    volumes:
+      - ./frontend:/code
+    ports:
+      - "4200:4200"
