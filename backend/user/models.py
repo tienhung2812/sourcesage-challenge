@@ -9,9 +9,20 @@ SALT = "67pZ-P~kc(7J:xz=qJhf=GbHe7"
 EXPIRE_TIME=20
 
 def get_hashed_password(plain_text_password):
+    # Generate hased password
     return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
 
-class User(db.Model):
+class Base(db.Model):
+    __abstract__ = True
+
+    def save(self):
+        """Save instance to database
+        """        
+        db.session.add(self)
+        db.session.commit() 
+
+
+class User(Base):
     """ Create user table"""
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(80), unique=True, nullable=False)
@@ -29,11 +40,6 @@ class User(db.Model):
         self.gender = gender 
         self.image = image
 
-    def save(self):
-        """Save user to database
-        """        
-        db.session.add(self)
-        db.session.commit() 
 
     @staticmethod
     def decode_token(access_token):
@@ -81,7 +87,7 @@ class User(db.Model):
 
 RESET_EXIPIRE = 60
 
-class ResetPassword(db.Model):
+class ResetPassword(Base):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(80), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
@@ -91,12 +97,6 @@ class ResetPassword(db.Model):
         self.code = code
         self.user_id = user_id
         self.expire_time = datetime.datetime.now() + timedelta(minutes=RESET_EXIPIRE)
-
-    def save(self):
-        """Save user to database
-        """        
-        db.session.add(self)
-        db.session.commit() 
 
     @staticmethod
     def check_code(code):

@@ -12,6 +12,7 @@ BAD_REQUEST_STATUS_CODE=400
 UNAUTHORIZED_STATUS_CODE = 401
 
 def is_authorized(request):
+    # Check is request authorized
     token = request.headers.get('Authorization', None)
 
     try:
@@ -116,6 +117,8 @@ class LoginView(MethodView):
 class ForgotPasswordView(MethodView):
 
     def post(self):
+        """Request forgot password code
+        """        
         try:
             email = request.form.get('email', None)
 
@@ -135,6 +138,9 @@ class ForgotPasswordView(MethodView):
                     reset_password.save()
 
                     # Send email
+
+                # Should not return anything in this request but, should send via email
+                # But this for testing only
                 data = {
                     "code": code
                 }
@@ -147,6 +153,8 @@ class ForgotPasswordView(MethodView):
             
 class ResetPasswordView(MethodView):
     def post(self):
+        """Rest password
+        """        
         try:
             code = request.form.get('code', None)
             password = request.form.get('password', None)
@@ -164,11 +172,7 @@ class ResetPasswordView(MethodView):
                 
                 message = "Invalid code"
 
-                    # Send email
-                data = {
-                    "code": code
-                }
-                return api_response(data=data)
+                return api_response(message=message, status_code=BAD_REQUEST_STATUS_CODE)
 
         except Exception as e:
             print(e)

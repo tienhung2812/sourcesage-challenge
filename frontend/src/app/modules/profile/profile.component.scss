@@ -57,9 +57,10 @@ header{
 }
 
 .content{
-    -webkit-box-shadow: inset 5px 5px 14px -5px rgba(0,0,0,0.5);
-    -moz-box-shadow: inset 5px 5px 14px -5px rgba(0,0,0,0.5);
-    box-shadow: inset 5px 5px 14px -5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 10px 10px 10px -9px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 10px 10px 10px -9px rgba(0,0,0,0.5);
+    box-shadow: inset 10px 10px 10px -9px rgba(0,0,0,0.5);
+
     .container-fluid{
         height: 100%;
         display:flex;
@@ -76,13 +77,15 @@ header{
                     align-items:center;
                     height: 100px;
                     width: 100%;
+                    position: relative;
                     img{
                         position: absolute;
-                        top: 10%;
-                        left: 45%;
-                        display: block;
-                        margin-left: auto;
-                        margin-right: auto;
+                        margin: auto;
+                        left: 0;
+                        right: 0;
+                        text-align: center;
+                        z-index: 1;
+                        top: -80px;
                         width: 50%;
                         max-width: 150px;
                         border-radius: 50%;
