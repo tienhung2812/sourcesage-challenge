@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthService } from './services/index';
+import { AuthService, ProfileService } from './services/index';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { AuthService } from './services/index';
   ],
   providers: [
     AuthService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

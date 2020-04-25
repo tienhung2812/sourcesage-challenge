@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +14,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private cookieService: CookieService,
+    private router: Router
   ) { }
 
   login(email: string, password: string): Observable<any> {
@@ -42,5 +46,10 @@ export class AuthService {
         'Content-Type': 'application/json'
       })
     });
+  }
+
+  logout(){
+    this.cookieService.delete('token');
+    this.router.navigate(['/auth/login'])
   }
 }

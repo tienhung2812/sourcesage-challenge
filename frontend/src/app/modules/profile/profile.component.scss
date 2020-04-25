@@ -1,7 +1,6 @@
 header{
     height: 70px;
     width: 100%;
-    background-color: grey;
     .row{
         height: 100% !important;
         justify-content: space-between;
@@ -11,6 +10,18 @@ header{
         img {
             height: 100%;
     
+        }
+    }
+    .logout{
+        height: 100%;
+        display:flex;
+        align-items:center;
+        padding: 20px 30px;
+        span{
+            padding: 0 10px;
+        }
+        &:hover{
+            color: #5bc0de;
         }
     }
     
