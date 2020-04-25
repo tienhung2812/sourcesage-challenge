@@ -24,6 +24,13 @@ export class ProfileComponent implements OnInit {
   faUser = faUser;
   faCog = faCog;
 
+  profile = {
+    name: "Test",
+    email: "ttet@tet.comn",
+    gender: "Male",
+    age:"44"
+  }
+
   constructor() { }
 
   ngOnInit(): void {
