@@ -22,4 +22,32 @@
 
     display: flex;
     align-items: center;
+
+    input {
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: none;
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(141, 141, 141, 0.4);
+
+      }
+    .forget-password{
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        a{
+            color: #007bff;
+        }
+    }
+    button{
+        font-size: 0.85rem;
+        padding: 10px 100px;
+        text-transform: uppercase;
+    }
+      
+      
 }

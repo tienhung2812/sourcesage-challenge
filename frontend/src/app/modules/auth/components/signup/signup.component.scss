@@ -11,15 +11,36 @@
 .logo{
     padding: 40px 0;
     padding-right: 50%;
-    min-height: 25%;
     img{
         max-width:100%;
         max-height:100%;
     }
+}
+.signup-wrapper{
+    height: 100%;
 }
 .form{
     min-height: 75%;  /* Fallback for browsers do NOT support vh unit */
 
     display: flex;
     align-items: center;
+
+    input {
+        border: none;
+        border-radius: 0;
+        outline: none;
+        background: none;
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(141, 141, 141, 0.4);
+
+      }
+    button{
+        font-size: 0.85rem;
+        padding: 10px 100px;
+        text-transform: uppercase;
+    }
 }
